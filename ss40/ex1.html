@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name="" id="name" placeholder="nhập họ tên">
+        <input type="text" name="" id="age" placeholder="nhập tuổi">
+        <input type="text" name="" id="email" placeholder="nhập gmail">
+        <button>Thêm</button>
+    </form>
+    <script>
+        document
+            .getElementById("name")
+            .addEventListener("input", updateInformation);
+        document
+            .getElementById("age")
+            .addEventListener("input", updateInformation);
+        document
+            .getElementById("email")
+            .addEventListener("input", updateInformation);
+
+        function updateInformation() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let email = document.getElementById("email").value;
+
+            let information = {
+                name: name,
+                age: age,
+                email: email,
+            };
+            localStorage.setItem("information", JSON.stringify(information));
+            document.getElementById("displayInformation").innerHTML =
+                JSON.stringify(information);
+        }
+    </script>
+</body>
+
+</html>

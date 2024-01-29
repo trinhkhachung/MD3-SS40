@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Dữ liệu</h1>
+    <div id="print"></div>
+    <script>
+        // Lấy tất cả các khóa trong localStorage
+        const keys = Object.keys(localStorage);
+
+        // Lấy phần tử danh sách từ DOM
+        const listElement = document.getElementById("print");
+
+        // Lặp qua các khóa và thêm các phần tử mới vào danh sách
+        keys.forEach(key => {
+            const value = localStorage.getItem(key);
+            const listItem = document.createElement("li");
+            listItem.textContent = `Key: ${key}, Value: ${value}`;
+            listElement.appendChild(listItem);
+        });
+    </script>
+</body>
+
+</html>

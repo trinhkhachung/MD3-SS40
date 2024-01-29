@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="" id="inputValue" placeholder="Nhập tên cầu thủ">
+        <button type="submit">Thêm cầu thủ</button> <br>
+    </form>
+    <script>
+        let $= document.querySelector.bind(document);
+        let $$= document.querySelectorAll.bind(document);
+        let list = JSON.parse(localStorage.getItem('jobs')) || [];
+        // thêm cầu thủ
+        function create() {
+            // lấy giá trị từ ô input
+            let inputValue = $('#inputValue').value;
+             if (!inputValue) {
+                alert("Tên công việc không được để trống");
+            } else {
+                // Thiết kế đối tượng công việc
+                const job = {
+                    id: Math.ceil(Math.random() * 10000000),
+                    name: inputValue,
+                    status: false,
+                };
+
+                // Push công việc vào mảng
+                list.push(job);
+
+                // Lưu dữ liệu lên local
+                localStorage.setItem("jobs", JSON.stringify(list));
+
+                // CLear giá trị trong ô input
+                $("#inputValue").value = "";
+
+                // Gọi hàm render danh sách công việc
+                render();
+            }
+        }
+    </script>
+</body>
+</html>
